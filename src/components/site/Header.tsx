@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { Link, useRouterState } from "@tanstack/react-router";
-import { Menu, Phone, X, Droplet } from "lucide-react";
+import { Menu, Phone, X } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { site } from "@/data/site";
 import { cn } from "@/lib/utils";
@@ -10,7 +10,6 @@ const nav = [
   { label: "Hizmetlerimiz", to: "/hizmetler" },
   { label: "Hakkımızda", to: "/hakkimizda" },
   { label: "Nasıl Çalışıyoruz?", to: "/nasil-calisiyoruz" },
-  { label: "Sık Sorulan Sorular", to: "/sik-sorulan-sorular" },
   { label: "İletişim", to: "/iletisim" },
 ];
 
@@ -38,16 +37,8 @@ export function Header() {
       )}
     >
       <div className="container-page flex h-18 items-center justify-between gap-4 py-3">
-        <Link to="/" className="flex items-center gap-2.5" aria-label={`${site.name} ana sayfa`}>
-          <span className="flex size-9 items-center justify-center rounded-xl bg-gradient-navy text-navy-foreground">
-            <Droplet className="size-4.5 text-cyan" aria-hidden="true" />
-          </span>
-          <span className="flex flex-col leading-none">
-            <span className="text-base font-extrabold tracking-tight text-navy">Hizmet34</span>
-            <span className="text-[0.68rem] font-semibold uppercase tracking-[0.22em] text-muted-foreground">
-              Tesisat
-            </span>
-          </span>
+        <Link to="/" className="flex shrink-0 items-center" aria-label={`${site.name} ana sayfa`}>
+          <img src="/logo.svg" alt={site.name} className="h-11 w-auto object-contain sm:h-12" />
         </Link>
 
         <nav aria-label="Ana menü" className="hidden items-center gap-1 lg:flex">

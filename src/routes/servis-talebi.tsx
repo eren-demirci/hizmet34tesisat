@@ -47,6 +47,13 @@ function ServiceRequestPage() {
                 {site.phone}
               </a>
               <a
+                href={site.phoneNumbers[1].href}
+                className="mt-3 flex items-center gap-3 rounded-xl border border-border px-4 py-3 text-sm font-semibold text-navy transition-colors hover:border-brand/40 hover:text-brand"
+              >
+                <Phone className="size-4 text-brand" aria-hidden="true" />
+                {site.phoneNumbers[1].label}
+              </a>
+              <a
                 href={site.whatsappHref}
                 target="_blank"
                 rel="noopener noreferrer"

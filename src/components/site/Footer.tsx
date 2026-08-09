@@ -1,5 +1,5 @@
 import { Link } from "@tanstack/react-router";
-import { Clock, Droplet, Mail, MapPin, MessageCircle, Phone } from "lucide-react";
+import { Clock, Mail, MapPin, MessageCircle, Phone } from "lucide-react";
 import { site, services } from "@/data/site";
 
 const footerServices = services.filter((s) =>
@@ -17,12 +17,13 @@ export function Footer() {
     <footer className="bg-navy text-navy-foreground">
       <div className="container-page grid gap-12 py-16 md:grid-cols-2 lg:grid-cols-4 lg:py-20">
         <div>
-          <div className="flex items-center gap-2.5">
-            <span className="flex size-9 items-center justify-center rounded-xl bg-navy-foreground/10">
-              <Droplet className="size-4.5 text-cyan" aria-hidden="true" />
-            </span>
-            <span className="text-base font-extrabold tracking-tight">Hizmet34 Tesisat</span>
-          </div>
+          <Link
+            to="/"
+            aria-label={`${site.name} ana sayfa`}
+            className="inline-flex rounded-xl bg-white px-3 py-2 shadow-sm transition-opacity hover:opacity-95"
+          >
+            <img src="/logo.svg" alt={site.name} className="h-12 w-auto object-contain" />
+          </Link>
           <p className="mt-4 text-sm leading-relaxed text-navy-foreground/65">
             Su kaçağı tespiti, tıkanıklık açma ve tesisat onarımında cihaz destekli çalışan
             profesyonel teknik servis ekibi. Sorunun kaynağını doğru tespit ediyor, minimum
@@ -78,9 +79,13 @@ export function Footer() {
           <ul className="mt-5 space-y-4 text-sm text-navy-foreground/70">
             <li className="flex items-start gap-3">
               <Phone className="mt-0.5 size-4 shrink-0 text-cyan" aria-hidden="true" />
-              <a href={site.phoneHref} className="transition-colors hover:text-navy-foreground">
-                {site.phone}
-              </a>
+              <span className="flex flex-col gap-1">
+                {site.phoneNumbers.map((phone) => (
+                  <a key={phone.href} href={phone.href} className="transition-colors hover:text-navy-foreground">
+                    {phone.label}
+                  </a>
+                ))}
+              </span>
             </li>
             <li className="flex items-start gap-3">
               <MessageCircle className="mt-0.5 size-4 shrink-0 text-cyan" aria-hidden="true" />
@@ -113,7 +118,17 @@ export function Footer() {
 
       <div className="border-t border-navy-foreground/10">
         <div className="container-page flex flex-col items-center justify-between gap-4 py-6 text-xs text-navy-foreground/55 sm:flex-row">
-          <p>© 2026 Hizmet34 Tesisat. Tüm hakları saklıdır.</p>
+          <p>
+            © 2026 Hizmet34 Tesisat. Tüm hakları saklıdır.{" "}
+            <a
+              href="https://lapdijital.com"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="transition-colors hover:text-navy-foreground"
+            >
+              Lap Dijital tarafından yapılmıştır.
+            </a>
+          </p>
           <ul className="flex flex-wrap items-center gap-5">
             <li>
               <Link to="/kvkk" className="transition-colors hover:text-navy-foreground">
