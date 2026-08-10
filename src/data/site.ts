@@ -1,4 +1,5 @@
 export const site = {
+  url: "https://www.hizmet34tesisat.com",
   name: "Hizmet34 Tesisat",
   tagline: "Profesyonel Tesisat Çözümleri, Hızlı Müdahale",
   phone: "0530 372 60 63",
