@@ -9,6 +9,7 @@
 import { writeFileSync } from "node:fs";
 import { fileURLToPath } from "node:url";
 import { districts, services, site } from "../src/data/site";
+import { guides } from "../src/data/guides";
 
 type UrlEntry = {
   path: string;
@@ -25,6 +26,7 @@ const staticPages: UrlEntry[] = [
   { path: "/nasil-calisiyoruz", changefreq: "monthly", priority: "0.6" },
   { path: "/sik-sorulan-sorular", changefreq: "monthly", priority: "0.6" },
   { path: "/hakkimizda", changefreq: "monthly", priority: "0.6" },
+  { path: "/rehber", changefreq: "weekly", priority: "0.7" },
   { path: "/gizlilik-politikasi", changefreq: "yearly", priority: "0.3" },
   { path: "/kvkk", changefreq: "yearly", priority: "0.3" },
   { path: "/cerez-politikasi", changefreq: "yearly", priority: "0.3" },
@@ -54,12 +56,19 @@ const clogRemovalDistrictPages: UrlEntry[] = districts.map((d) => ({
   priority: "0.7",
 }));
 
+const guidePages: UrlEntry[] = guides.map((g) => ({
+  path: `/rehber/${g.slug}`,
+  changefreq: "monthly",
+  priority: "0.6",
+}));
+
 const allEntries: UrlEntry[] = [
   ...staticPages,
   ...servicePages,
   ...districtPages,
   ...leakDetectionDistrictPages,
   ...clogRemovalDistrictPages,
+  ...guidePages,
 ];
 
 const today = new Date().toISOString().slice(0, 10);

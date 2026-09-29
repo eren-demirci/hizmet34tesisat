@@ -62,6 +62,16 @@ export function Footer() {
               </Link>
             </li>
             <li>
+              <Link to="/nasil-calisiyoruz" className="text-navy-foreground/70 transition-colors hover:text-navy-foreground">
+                Nasıl Çalışıyoruz?
+              </Link>
+            </li>
+            <li>
+              <Link to="/rehber" className="text-navy-foreground/70 transition-colors hover:text-navy-foreground">
+                Tesisat Rehberi
+              </Link>
+            </li>
+            <li>
               <Link to="/sik-sorulan-sorular" className="text-navy-foreground/70 transition-colors hover:text-navy-foreground">
                 Sık Sorulan Sorular
               </Link>

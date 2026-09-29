@@ -8,8 +8,9 @@ import { cn } from "@/lib/utils";
 const nav = [
   { label: "Ana Sayfa", to: "/" },
   { label: "Hizmetlerimiz", to: "/hizmetler" },
+  { label: "Bölgeler", to: "/hizmet-bolgeleri" },
+  { label: "Rehber", to: "/rehber" },
   { label: "Hakkımızda", to: "/hakkimizda" },
-  { label: "Nasıl Çalışıyoruz?", to: "/nasil-calisiyoruz" },
   { label: "İletişim", to: "/iletisim" },
 ];
 

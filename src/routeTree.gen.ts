@@ -18,12 +18,15 @@ import { Route as HizmetlerRouteImport } from './routes/hizmetler'
 import { Route as IletisimRouteImport } from './routes/iletisim'
 import { Route as KvkkRouteImport } from './routes/kvkk'
 import { Route as NasilCalisiyoruzRouteImport } from './routes/nasil-calisiyoruz'
+import { Route as RehberRouteImport } from './routes/rehber'
 import { Route as ServisTalebiRouteImport } from './routes/servis-talebi'
 import { Route as SikSorulanSorularRouteImport } from './routes/sik-sorulan-sorular'
 import { Route as HizmetBolgeleriIndexRouteImport } from './routes/hizmet-bolgeleri.index'
 import { Route as HizmetBolgeleriIlceRouteImport } from './routes/hizmet-bolgeleri.$ilce'
 import { Route as HizmetlerIndexRouteImport } from './routes/hizmetler.index'
 import { Route as HizmetlerSlugRouteImport } from './routes/hizmetler.$slug'
+import { Route as RehberIndexRouteImport } from './routes/rehber.index'
+import { Route as RehberSlugRouteImport } from './routes/rehber.$slug'
 import { Route as SuKacagiTespitiIlceRouteImport } from './routes/su-kacagi-tespiti.$ilce'
 import { Route as TikaniklikAcmaIlceRouteImport } from './routes/tikaniklik-acma.$ilce'
 
@@ -72,6 +75,11 @@ const NasilCalisiyoruzRoute = NasilCalisiyoruzRouteImport.update({
   path: '/nasil-calisiyoruz',
   getParentRoute: () => rootRouteImport,
 } as any)
+const RehberRoute = RehberRouteImport.update({
+  id: '/rehber',
+  path: '/rehber',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const ServisTalebiRoute = ServisTalebiRouteImport.update({
   id: '/servis-talebi',
   path: '/servis-talebi',
@@ -102,6 +110,16 @@ const HizmetlerSlugRoute = HizmetlerSlugRouteImport.update({
   path: '/$slug',
   getParentRoute: () => HizmetlerRoute,
 } as any)
+const RehberIndexRoute = RehberIndexRouteImport.update({
+  id: '/',
+  path: '/',
+  getParentRoute: () => RehberRoute,
+} as any)
+const RehberSlugRoute = RehberSlugRouteImport.update({
+  id: '/$slug',
+  path: '/$slug',
+  getParentRoute: () => RehberRoute,
+} as any)
 const SuKacagiTespitiIlceRoute = SuKacagiTespitiIlceRouteImport.update({
   id: '/su-kacagi-tespiti/$ilce',
   path: '/su-kacagi-tespiti/$ilce',
@@ -123,14 +141,17 @@ export interface FileRoutesByFullPath {
   '/iletisim': typeof IletisimRoute
   '/kvkk': typeof KvkkRoute
   '/nasil-calisiyoruz': typeof NasilCalisiyoruzRoute
+  '/rehber': typeof RehberRouteWithChildren
   '/servis-talebi': typeof ServisTalebiRoute
   '/sik-sorulan-sorular': typeof SikSorulanSorularRoute
   '/hizmet-bolgeleri/$ilce': typeof HizmetBolgeleriIlceRoute
   '/hizmetler/$slug': typeof HizmetlerSlugRoute
+  '/rehber/$slug': typeof RehberSlugRoute
   '/su-kacagi-tespiti/$ilce': typeof SuKacagiTespitiIlceRoute
   '/tikaniklik-acma/$ilce': typeof TikaniklikAcmaIlceRoute
   '/hizmet-bolgeleri/': typeof HizmetBolgeleriIndexRoute
   '/hizmetler/': typeof HizmetlerIndexRoute
+  '/rehber/': typeof RehberIndexRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
@@ -144,10 +165,12 @@ export interface FileRoutesByTo {
   '/sik-sorulan-sorular': typeof SikSorulanSorularRoute
   '/hizmet-bolgeleri/$ilce': typeof HizmetBolgeleriIlceRoute
   '/hizmetler/$slug': typeof HizmetlerSlugRoute
+  '/rehber/$slug': typeof RehberSlugRoute
   '/su-kacagi-tespiti/$ilce': typeof SuKacagiTespitiIlceRoute
   '/tikaniklik-acma/$ilce': typeof TikaniklikAcmaIlceRoute
   '/hizmet-bolgeleri': typeof HizmetBolgeleriIndexRoute
   '/hizmetler': typeof HizmetlerIndexRoute
+  '/rehber': typeof RehberIndexRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
@@ -160,14 +183,17 @@ export interface FileRoutesById {
   '/iletisim': typeof IletisimRoute
   '/kvkk': typeof KvkkRoute
   '/nasil-calisiyoruz': typeof NasilCalisiyoruzRoute
+  '/rehber': typeof RehberRouteWithChildren
   '/servis-talebi': typeof ServisTalebiRoute
   '/sik-sorulan-sorular': typeof SikSorulanSorularRoute
   '/hizmet-bolgeleri/$ilce': typeof HizmetBolgeleriIlceRoute
   '/hizmetler/$slug': typeof HizmetlerSlugRoute
+  '/rehber/$slug': typeof RehberSlugRoute
   '/su-kacagi-tespiti/$ilce': typeof SuKacagiTespitiIlceRoute
   '/tikaniklik-acma/$ilce': typeof TikaniklikAcmaIlceRoute
   '/hizmet-bolgeleri/': typeof HizmetBolgeleriIndexRoute
   '/hizmetler/': typeof HizmetlerIndexRoute
+  '/rehber/': typeof RehberIndexRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
@@ -181,14 +207,17 @@ export interface FileRouteTypes {
     | '/iletisim'
     | '/kvkk'
     | '/nasil-calisiyoruz'
+    | '/rehber'
     | '/servis-talebi'
     | '/sik-sorulan-sorular'
     | '/hizmet-bolgeleri/$ilce'
     | '/hizmetler/$slug'
+    | '/rehber/$slug'
     | '/su-kacagi-tespiti/$ilce'
     | '/tikaniklik-acma/$ilce'
     | '/hizmet-bolgeleri/'
     | '/hizmetler/'
+    | '/rehber/'
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
@@ -202,10 +231,12 @@ export interface FileRouteTypes {
     | '/sik-sorulan-sorular'
     | '/hizmet-bolgeleri/$ilce'
     | '/hizmetler/$slug'
+    | '/rehber/$slug'
     | '/su-kacagi-tespiti/$ilce'
     | '/tikaniklik-acma/$ilce'
     | '/hizmet-bolgeleri'
     | '/hizmetler'
+    | '/rehber'
   id:
     | '__root__'
     | '/'
@@ -217,14 +248,17 @@ export interface FileRouteTypes {
     | '/iletisim'
     | '/kvkk'
     | '/nasil-calisiyoruz'
+    | '/rehber'
     | '/servis-talebi'
     | '/sik-sorulan-sorular'
     | '/hizmet-bolgeleri/$ilce'
     | '/hizmetler/$slug'
+    | '/rehber/$slug'
     | '/su-kacagi-tespiti/$ilce'
     | '/tikaniklik-acma/$ilce'
     | '/hizmet-bolgeleri/'
     | '/hizmetler/'
+    | '/rehber/'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
@@ -237,6 +271,7 @@ export interface RootRouteChildren {
   IletisimRoute: typeof IletisimRoute
   KvkkRoute: typeof KvkkRoute
   NasilCalisiyoruzRoute: typeof NasilCalisiyoruzRoute
+  RehberRoute: typeof RehberRouteWithChildren
   ServisTalebiRoute: typeof ServisTalebiRoute
   SikSorulanSorularRoute: typeof SikSorulanSorularRoute
   SuKacagiTespitiIlceRoute: typeof SuKacagiTespitiIlceRoute
@@ -308,6 +343,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof NasilCalisiyoruzRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/rehber': {
+      id: '/rehber'
+      path: '/rehber'
+      fullPath: '/rehber'
+      preLoaderRoute: typeof RehberRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/servis-talebi': {
       id: '/servis-talebi'
       path: '/servis-talebi'
@@ -349,6 +391,20 @@ declare module '@tanstack/react-router' {
       fullPath: '/hizmetler/$slug'
       preLoaderRoute: typeof HizmetlerSlugRouteImport
       parentRoute: typeof HizmetlerRoute
+    }
+    '/rehber/': {
+      id: '/rehber/'
+      path: '/'
+      fullPath: '/rehber/'
+      preLoaderRoute: typeof RehberIndexRouteImport
+      parentRoute: typeof RehberRoute
+    }
+    '/rehber/$slug': {
+      id: '/rehber/$slug'
+      path: '/$slug'
+      fullPath: '/rehber/$slug'
+      preLoaderRoute: typeof RehberSlugRouteImport
+      parentRoute: typeof RehberRoute
     }
     '/su-kacagi-tespiti/$ilce': {
       id: '/su-kacagi-tespiti/$ilce'
@@ -395,6 +451,19 @@ const HizmetlerRouteWithChildren = HizmetlerRoute._addFileChildren(
   HizmetlerRouteChildren,
 )
 
+interface RehberRouteChildren {
+  RehberSlugRoute: typeof RehberSlugRoute
+  RehberIndexRoute: typeof RehberIndexRoute
+}
+
+const RehberRouteChildren: RehberRouteChildren = {
+  RehberSlugRoute: RehberSlugRoute,
+  RehberIndexRoute: RehberIndexRoute,
+}
+
+const RehberRouteWithChildren =
+  RehberRoute._addFileChildren(RehberRouteChildren)
+
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   CerezPolitikasiRoute: CerezPolitikasiRoute,
@@ -405,6 +474,7 @@ const rootRouteChildren: RootRouteChildren = {
   IletisimRoute: IletisimRoute,
   KvkkRoute: KvkkRoute,
   NasilCalisiyoruzRoute: NasilCalisiyoruzRoute,
+  RehberRoute: RehberRouteWithChildren,
   ServisTalebiRoute: ServisTalebiRoute,
   SikSorulanSorularRoute: SikSorulanSorularRoute,
   SuKacagiTespitiIlceRoute: SuKacagiTespitiIlceRoute,
