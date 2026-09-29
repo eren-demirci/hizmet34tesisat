@@ -8,8 +8,10 @@ import { CTASection } from "@/components/site/CTASection";
 import { Reveal } from "@/components/site/Reveal";
 import { ServiceIcon } from "@/components/site/ServiceIcon";
 import { ServiceCard } from "@/components/site/ServiceCard";
-import { serviceBySlug, services, site, type Service } from "@/data/site";
-import { breadcrumbJsonLd, faqJsonLd, pageMeta, serviceJsonLd } from "@/lib/seo";
+import { ProjectList } from "@/components/site/ProjectList";
+import { districts, serviceBySlug, services, site, type Service } from "@/data/site";
+import { projectsFor } from "@/data/projects";
+import { breadcrumbJsonLd, faqJsonLd, canonical, pageMeta, serviceJsonLd } from "@/lib/seo";
 import repairImage from "@/assets/plumbing-repair.jpg";
 
 export const Route = createFileRoute("/hizmetler/$slug")({
@@ -31,7 +33,7 @@ export const Route = createFileRoute("/hizmetler/$slug")({
         url,
         type: "article",
       }),
-      links: [{ rel: "canonical", href: url }],
+      links: [canonical(url)],
       scripts: [
         {
           type: "application/ld+json",
@@ -54,9 +56,18 @@ export const Route = createFileRoute("/hizmetler/$slug")({
   component: ServiceDetail,
 });
 
+// Bu hizmetlerin ilçe bazlı ayrı sayfaları var; hizmet sayfasından hepsine link verilir.
+const districtRoutes: Partial<Record<Service["slug"], string>> = {
+  "su-kacagi-tespiti": "/su-kacagi-tespiti/$ilce",
+  "tikaniklik-acma": "/tikaniklik-acma/$ilce",
+};
+
+const regions = ["Anadolu Yakası", "Avrupa Yakası"] as const;
+
 function ServiceDetail() {
   const { service } = Route.useLoaderData() as { service: Service };
   const related = services.filter((s) => s.slug !== service.slug).slice(0, 3);
+  const districtRoute = districtRoutes[service.slug];
 
   return (
     <>
@@ -205,6 +216,45 @@ function ServiceDetail() {
             className="lg:sticky lg:top-28 lg:self-start"
           />
           <FAQAccordion items={service.faq} idPrefix={service.slug} />
+        </div>
+      </section>
+
+      <ProjectList
+        projects={projectsFor({ service: service.slug })}
+        title={`${service.title}: son işlerimiz`}
+        className="bg-background"
+      />
+
+      <section className="border-t border-border bg-surface py-16 lg:py-24">
+        <div className="container-page">
+          <SectionHeading
+            align="left"
+            eyebrow="Hizmet Bölgeleri"
+            title={`İstanbul genelinde ${service.title.toLocaleLowerCase("tr-TR")}`}
+            description="İstanbul'un iki yakasında da yerinde servis veriyoruz. Bölgenizi seçerek ilçeye özel bilgilere ulaşabilirsiniz."
+          />
+          <div className="mt-10 grid gap-10 lg:grid-cols-2">
+            {regions.map((region) => (
+              <div key={region}>
+                <h3 className="text-base font-bold text-navy">{region}</h3>
+                <ul className="mt-4 flex flex-wrap gap-2">
+                  {districts
+                    .filter((d) => d.region === region)
+                    .map((d) => (
+                      <li key={d.slug}>
+                        <Link
+                          to={districtRoute ?? "/hizmet-bolgeleri/$ilce"}
+                          params={{ ilce: d.slug }}
+                          className="inline-block rounded-full border border-border bg-background px-3 py-1.5 text-sm text-foreground transition-colors hover:border-brand/40 hover:text-brand"
+                        >
+                          {districtRoute ? `${d.name} ${service.title.toLocaleLowerCase("tr-TR")}` : d.name}
+                        </Link>
+                      </li>
+                    ))}
+                </ul>
+              </div>
+            ))}
+          </div>
         </div>
       </section>
 

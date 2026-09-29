@@ -1,7 +1,7 @@
 import { createFileRoute, notFound } from "@tanstack/react-router";
 import { LocationPage } from "@/components/site/LocationPage";
 import { districtBySlug } from "@/data/site";
-import { breadcrumbJsonLd, faqJsonLd, pageMeta } from "@/lib/seo";
+import { breadcrumbJsonLd, canonical, faqJsonLd, pageMeta, serviceJsonLd } from "@/lib/seo";
 
 type District = { slug: string; name: string; region: string };
 
@@ -32,8 +32,14 @@ export const Route = createFileRoute("/su-kacagi-tespiti/$ilce")({
     const description = `${name} bölgesinde cihazla su kaçağı tespiti: akustik dinleme, termal görüntüleme ve nem ölçümüyle noktasal tespit.`;
     return {
       meta: pageMeta({ title, description, url }),
-      links: [{ rel: "canonical", href: url }],
+      links: [canonical(url)],
       scripts: [
+        {
+          type: "application/ld+json",
+          children: JSON.stringify(
+            serviceJsonLd(`${name} Su Kaçağı Tespiti`, description, url, `${name}, İstanbul`),
+          ),
+        },
         { type: "application/ld+json", children: JSON.stringify(faqJsonLd(faqFor(name))) },
         {
           type: "application/ld+json",
@@ -57,6 +63,8 @@ function Page() {
 
   return (
     <LocationPage
+      district={district}
+      variant="su-kacagi-tespiti"
       eyebrow="Cihazla Su Kaçağı Tespiti"
       title={`${name} Su Kaçağı Tespiti`}
       description={`${name} bölgesinde su kaçağının kaynağını cihaz desteğiyle belirliyor, gereksiz kırma işlemlerinin önüne geçiyoruz.`}

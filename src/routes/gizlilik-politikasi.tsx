@@ -1,6 +1,6 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { PageHero } from "@/components/site/PageHero";
-import { pageMeta } from "@/lib/seo";
+import { canonical, pageMeta } from "@/lib/seo";
 
 const title = "Gizlilik Politikası | Hizmet34 Tesisat";
 const description =
@@ -9,7 +9,7 @@ const description =
 export const Route = createFileRoute("/gizlilik-politikasi")({
   head: () => ({
     meta: pageMeta({ title, description, url: "/gizlilik-politikasi" }),
-    links: [{ rel: "canonical", href: "/gizlilik-politikasi" }],
+    links: [canonical("/gizlilik-politikasi")],
   }),
   component: Page,
 });

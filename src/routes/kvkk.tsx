@@ -1,6 +1,6 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { PageHero } from "@/components/site/PageHero";
-import { pageMeta } from "@/lib/seo";
+import { canonical, pageMeta } from "@/lib/seo";
 
 const title = "KVKK Aydınlatma Metni | Hizmet34 Tesisat";
 const description =
@@ -9,7 +9,7 @@ const description =
 export const Route = createFileRoute("/kvkk")({
   head: () => ({
     meta: pageMeta({ title, description, url: "/kvkk" }),
-    links: [{ rel: "canonical", href: "/kvkk" }],
+    links: [canonical("/kvkk")],
   }),
   component: Page,
 });

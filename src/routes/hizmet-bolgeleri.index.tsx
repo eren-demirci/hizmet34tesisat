@@ -4,7 +4,7 @@ import { LocationCard } from "@/components/site/LocationCard";
 import { CTASection } from "@/components/site/CTASection";
 import { Reveal } from "@/components/site/Reveal";
 import { districts } from "@/data/site";
-import { pageMeta } from "@/lib/seo";
+import { canonical, pageMeta } from "@/lib/seo";
 
 const title = "Hizmet Bölgeleri | Hizmet34 Tesisat";
 const description =
@@ -15,7 +15,7 @@ const regions = ["Anadolu Yakası", "Avrupa Yakası"];
 export const Route = createFileRoute("/hizmet-bolgeleri/")({
   head: () => ({
     meta: pageMeta({ title, description, url: "/hizmet-bolgeleri" }),
-    links: [{ rel: "canonical", href: "/hizmet-bolgeleri" }],
+    links: [canonical("/hizmet-bolgeleri")],
   }),
   component: AreasPage,
 });

@@ -4,7 +4,7 @@ import { StatsSection } from "@/components/site/StatsSection";
 import { CTASection } from "@/components/site/CTASection";
 import { SectionHeading } from "@/components/site/SectionHeading";
 import { Reveal } from "@/components/site/Reveal";
-import { pageMeta } from "@/lib/seo";
+import { canonical, pageMeta } from "@/lib/seo";
 import cameraImage from "@/assets/drain-camera.jpg";
 
 const title = "Hakkımızda | Hizmet34 Tesisat";
@@ -21,7 +21,7 @@ const values = [
 export const Route = createFileRoute("/hakkimizda")({
   head: () => ({
     meta: pageMeta({ title, description, url: "/hakkimizda" }),
-    links: [{ rel: "canonical", href: "/hakkimizda" }],
+    links: [canonical("/hakkimizda")],
   }),
   component: AboutPage,
 });

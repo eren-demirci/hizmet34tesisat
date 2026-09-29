@@ -3,7 +3,7 @@ import { PageHero } from "@/components/site/PageHero";
 import { FAQAccordion } from "@/components/site/FAQAccordion";
 import { CTASection } from "@/components/site/CTASection";
 import { homeFaq, services } from "@/data/site";
-import { faqJsonLd, pageMeta } from "@/lib/seo";
+import { faqJsonLd, canonical, pageMeta } from "@/lib/seo";
 
 const allFaq = [...homeFaq, ...services.flatMap((s) => s.faq)].filter(
   (item, i, arr) => arr.findIndex((x) => x.q === item.q) === i,
@@ -16,7 +16,7 @@ const description =
 export const Route = createFileRoute("/sik-sorulan-sorular")({
   head: () => ({
     meta: pageMeta({ title, description, url: "/sik-sorulan-sorular" }),
-    links: [{ rel: "canonical", href: "/sik-sorulan-sorular" }],
+    links: [canonical("/sik-sorulan-sorular")],
     scripts: [{ type: "application/ld+json", children: JSON.stringify(faqJsonLd(allFaq)) }],
   }),
   component: FaqPage,

@@ -2,7 +2,7 @@ import { createFileRoute } from "@tanstack/react-router";
 import { ServiceRequestForm } from "@/components/site/ServiceRequestForm";
 import { PageHero } from "@/components/site/PageHero";
 import { site } from "@/data/site";
-import { pageMeta } from "@/lib/seo";
+import { canonical, pageMeta } from "@/lib/seo";
 import { MessageCircle, Phone, Clock } from "lucide-react";
 
 const title = "Servis Talebi Oluştur | Hizmet34 Tesisat";
@@ -15,7 +15,7 @@ export const Route = createFileRoute("/servis-talebi")({
   }),
   head: () => ({
     meta: pageMeta({ title, description, url: "/servis-talebi" }),
-    links: [{ rel: "canonical", href: "/servis-talebi" }],
+    links: [canonical("/servis-talebi")],
   }),
   component: ServiceRequestPage,
 });

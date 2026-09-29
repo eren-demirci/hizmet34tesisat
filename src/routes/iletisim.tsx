@@ -3,7 +3,7 @@ import { Clock, Mail, MapPin, MessageCircle, Phone } from "lucide-react";
 import { PageHero } from "@/components/site/PageHero";
 import { ServiceRequestForm } from "@/components/site/ServiceRequestForm";
 import { site } from "@/data/site";
-import { pageMeta } from "@/lib/seo";
+import { canonical, pageMeta } from "@/lib/seo";
 
 const title = "İletişim | Hizmet34 Tesisat";
 const description =
@@ -12,7 +12,7 @@ const description =
 export const Route = createFileRoute("/iletisim")({
   head: () => ({
     meta: pageMeta({ title, description, url: "/iletisim" }),
-    links: [{ rel: "canonical", href: "/iletisim" }],
+    links: [canonical("/iletisim")],
   }),
   component: ContactPage,
 });

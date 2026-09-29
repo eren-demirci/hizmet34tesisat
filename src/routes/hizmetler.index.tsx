@@ -3,7 +3,7 @@ import { PageHero } from "@/components/site/PageHero";
 import { ServiceGrid } from "@/components/site/ServiceGrid";
 import { CTASection } from "@/components/site/CTASection";
 import { ProcessTimeline } from "@/components/site/ProcessTimeline";
-import { breadcrumbJsonLd, pageMeta } from "@/lib/seo";
+import { breadcrumbJsonLd, canonical, pageMeta } from "@/lib/seo";
 
 const title = "Tesisat Hizmetlerimiz | Hizmet34 Tesisat";
 const description =
@@ -12,7 +12,7 @@ const description =
 export const Route = createFileRoute("/hizmetler/")({
   head: () => ({
     meta: pageMeta({ title, description, url: "/hizmetler" }),
-    links: [{ rel: "canonical", href: "/hizmetler" }],
+    links: [canonical("/hizmetler")],
     scripts: [
       {
         type: "application/ld+json",

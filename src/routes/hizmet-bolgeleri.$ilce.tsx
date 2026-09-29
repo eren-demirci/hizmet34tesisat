@@ -1,7 +1,7 @@
 import { createFileRoute, notFound } from "@tanstack/react-router";
 import { LocationPage } from "@/components/site/LocationPage";
 import { districtBySlug } from "@/data/site";
-import { breadcrumbJsonLd, faqJsonLd, pageMeta } from "@/lib/seo";
+import { breadcrumbJsonLd, canonical, faqJsonLd, pageMeta, serviceJsonLd } from "@/lib/seo";
 
 type District = { slug: string; name: string; region: string };
 
@@ -36,8 +36,14 @@ export const Route = createFileRoute("/hizmet-bolgeleri/$ilce")({
     const description = `${name} bölgesinde cihazla su kaçağı tespiti, tıkanıklık açma ve tesisat onarımı. Kırmadan tespit, temiz işçilik.`;
     return {
       meta: pageMeta({ title, description, url }),
-      links: [{ rel: "canonical", href: url }],
+      links: [canonical(url)],
       scripts: [
+        {
+          type: "application/ld+json",
+          children: JSON.stringify(
+            serviceJsonLd(`${name} Tesisat Hizmetleri`, description, url, `${name}, İstanbul`),
+          ),
+        },
         { type: "application/ld+json", children: JSON.stringify(faqJsonLd(faqFor(name))) },
         {
           type: "application/ld+json",
@@ -61,6 +67,8 @@ function DistrictPage() {
 
   return (
     <LocationPage
+      district={district}
+      variant="bolge"
       eyebrow={district.region}
       title={`${name} Bölgesinde Profesyonel Tesisat Hizmeti`}
       description={`${name} ve çevresinde su kaçağı tespiti, tıkanıklık açma ve tesisat onarımı hizmetleri veriyoruz.`}

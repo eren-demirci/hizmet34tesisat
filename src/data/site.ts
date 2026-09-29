@@ -12,7 +12,12 @@ export const site = {
   whatsappHref: "https://wa.me/905303726063",
   email: "info@hizmet34tesisat.com",
   address: "Güneştepe Mah. Başaran Sok. No: 6, Güngören / İstanbul",
+  streetAddress: "Güneştepe Mah. Başaran Sok. No: 6",
+  district: "Güngören",
   hours: "7/24 Hizmetteyiz",
+  // Google İşletme Profili, Instagram, Facebook vb. linkler buraya eklenince
+  // schema'daki sameAs alanına otomatik girer.
+  sameAs: [] as string[],
   description:
     "Su kaçağı tespiti, tıkanıklık açma ve tesisat onarımında cihaz destekli, temiz işçilikle çalışan profesyonel tesisat ekibi.",
 } as const;

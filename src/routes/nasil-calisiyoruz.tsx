@@ -3,7 +3,7 @@ import { PageHero } from "@/components/site/PageHero";
 import { ProcessTimeline } from "@/components/site/ProcessTimeline";
 import { ProblemSolution } from "@/components/site/ProblemSolution";
 import { CTASection } from "@/components/site/CTASection";
-import { pageMeta } from "@/lib/seo";
+import { canonical, pageMeta } from "@/lib/seo";
 
 const title = "Nasıl Çalışıyoruz? | Hizmet34 Tesisat";
 const description =
@@ -12,7 +12,7 @@ const description =
 export const Route = createFileRoute("/nasil-calisiyoruz")({
   head: () => ({
     meta: pageMeta({ title, description, url: "/nasil-calisiyoruz" }),
-    links: [{ rel: "canonical", href: "/nasil-calisiyoruz" }],
+    links: [canonical("/nasil-calisiyoruz")],
   }),
   component: ProcessPage,
 });
