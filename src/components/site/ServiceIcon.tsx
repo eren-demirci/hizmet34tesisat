@@ -8,6 +8,7 @@ import {
   Settings2,
   Layers,
   CircleDot,
+  Heater,
   type LucideIcon,
 } from "lucide-react";
 
@@ -21,6 +22,7 @@ const map: Record<string, LucideIcon> = {
   shower: ShowerHead,
   settings: Settings2,
   layers: Layers,
+  heater: Heater,
 };
 
 export function ServiceIcon({ name, className }: { name: string; className?: string }) {

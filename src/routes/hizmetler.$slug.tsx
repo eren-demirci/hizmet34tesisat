@@ -60,6 +60,7 @@ export const Route = createFileRoute("/hizmetler/$slug")({
 const districtRoutes: Partial<Record<Service["slug"], string>> = {
   "su-kacagi-tespiti": "/su-kacagi-tespiti/$ilce",
   "tikaniklik-acma": "/tikaniklik-acma/$ilce",
+  "kombi-petek-temizligi": "/kombi-petek-temizligi/$ilce",
 };
 
 const regions = ["Anadolu Yakası", "Avrupa Yakası"] as const;

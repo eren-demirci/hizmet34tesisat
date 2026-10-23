@@ -13,12 +13,20 @@ import { districtBySlug, site } from "@/data/site";
 import { districtDetail, profileText } from "@/data/districts";
 import { projectsFor } from "@/data/projects";
 
-export type LocationVariant = "bolge" | "su-kacagi-tespiti" | "tikaniklik-acma";
+export type LocationVariant =
+  | "bolge"
+  | "su-kacagi-tespiti"
+  | "tikaniklik-acma"
+  | "kombi-petek-temizligi";
 
 const variantLinks: Record<LocationVariant, { label: (name: string) => string; to: string }> = {
   bolge: { label: (n) => `${n} tesisat hizmetleri`, to: "/hizmet-bolgeleri/$ilce" },
   "su-kacagi-tespiti": { label: (n) => `${n} su kaçağı tespiti`, to: "/su-kacagi-tespiti/$ilce" },
   "tikaniklik-acma": { label: (n) => `${n} tıkanıklık açma`, to: "/tikaniklik-acma/$ilce" },
+  "kombi-petek-temizligi": {
+    label: (n) => `${n} kombi ve petek temizliği`,
+    to: "/kombi-petek-temizligi/$ilce",
+  },
 };
 
 export function LocationPage({

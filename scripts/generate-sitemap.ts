@@ -56,6 +56,12 @@ const clogRemovalDistrictPages: UrlEntry[] = districts.map((d) => ({
   priority: "0.7",
 }));
 
+const heatingCleaningDistrictPages: UrlEntry[] = districts.map((d) => ({
+  path: `/kombi-petek-temizligi/${d.slug}`,
+  changefreq: "monthly",
+  priority: "0.7",
+}));
+
 const guidePages: UrlEntry[] = guides.map((g) => ({
   path: `/rehber/${g.slug}`,
   changefreq: "monthly",
@@ -68,6 +74,7 @@ const allEntries: UrlEntry[] = [
   ...districtPages,
   ...leakDetectionDistrictPages,
   ...clogRemovalDistrictPages,
+  ...heatingCleaningDistrictPages,
   ...guidePages,
 ];
 

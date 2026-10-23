@@ -246,7 +246,7 @@ export const guides: Guide[] = [
     datePublished: "2026-09-29",
     dateModified: "2026-09-29",
     readingMinutes: 5,
-    relatedServices: ["su-kacagi-tespiti", "su-tesisati-tamiri"],
+    relatedServices: ["su-kacagi-tespiti", "su-tesisati-tamiri", "kombi-petek-temizligi"],
     sections: [
       {
         heading: "Normal kombi basıncı kaç olmalı?",

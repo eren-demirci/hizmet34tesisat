@@ -31,7 +31,8 @@ export type ServiceSlug =
   | "su-tesisati-tamiri"
   | "musluk-batarya-tamiri"
   | "klozet-rezervuar-tamiri"
-  | "tesisat-yenileme";
+  | "tesisat-yenileme"
+  | "kombi-petek-temizligi";
 
 export type Service = {
   slug: ServiceSlug;
@@ -547,6 +548,66 @@ export const services: Service[] = [
     metaTitle: "Tesisat Yenileme | Eski Su Tesisatı Değişimi — Hizmet34 Tesisat",
     metaDescription:
       "Eski ve problemli su tesisatlarının planlı, kontrollü ve test edilerek yenilenmesi. Minimum kırım, standartlara uygun malzeme.",
+  },
+  {
+    slug: "kombi-petek-temizligi",
+    title: "Kombi ve Petek Temizliği",
+    navTitle: "Kombi / Petek Temizliği",
+    icon: "heater",
+    short:
+      "Isınmayan petekler ve verimi düşen kombiler için makineli petek temizliği ve kombi bakımı.",
+    heroTitle: "Kombi ve Petek Temizliği",
+    heroText:
+      "Peteklerde biriken çamur, kireç ve tortuyu makineli sistemle temizliyor; ısınma performansını ve kombi verimini geri kazandırıyoruz.",
+    intro: [
+      "Kalorifer tesisatında zamanla biriken çamur, pas ve kireç, suyun peteklerde dolaşmasını engeller. Peteklerin alt kısmının soğuk kalması, bazı odaların geç ısınması ve artan doğalgaz faturası bu birikimin en yaygın sonuçlarıdır.",
+      "Petek temizliği, peteklerin sökülmeden özel temizleme makinesi ve tesisata uygun kimyasallarla yıkanmasıyla yapılır. Temizlik sonrası sistem temiz suyla durulanır, havası alınır ve kombi basıncı ayarlanarak teslim edilir.",
+    ],
+    symptoms: [
+      "Peteklerin alt kısmının soğuk, üst kısmının sıcak kalması",
+      "Bazı odaların geç ısınması veya hiç ısınmaması",
+      "Kombinin sık devreye girip çıkması",
+      "Kombi ve tesisattan gelen fokurdama veya vuruntu sesi",
+      "Önceki yıllara göre belirgin şekilde artan doğalgaz faturası",
+    ],
+    steps: [
+      { title: "Ön kontrol", text: "Kombi, petekler ve tesisat basıncı incelenir; ısınmayan bölgeler belirlenir." },
+      { title: "Makineli yıkama", text: "Petek temizleme makinesi tesisata bağlanır, uygun solüsyonla çamur ve tortu çözülür." },
+      { title: "Durulama", text: "Sistem temiz suyla yıkanarak çözülen kir ve kimyasal tamamen dışarı alınır." },
+      { title: "Hava alma ve test", text: "Peteklerin havası alınır, kombi basıncı ayarlanır ve ısınma test edilir." },
+    ],
+    equipment: [
+      { title: "Petek temizleme makinesi", text: "Yüksek debili pompa ile tesisattaki tortuyu peteklerden söker ve dışarı taşır." },
+      { title: "Tesisata uygun temizlik solüsyonu", text: "Boru ve peteklere zarar vermeden çamur ve kireci çözer." },
+      { title: "Termal kamera", text: "Temizlik öncesi ve sonrası peteklerdeki ısı dağılımını görünür kılar." },
+    ],
+    benefits: [
+      "Peteklerin her noktasında eşit ısınma",
+      "Daha düşük doğalgaz tüketimi",
+      "Kombinin daha az yorulması ve daha uzun ömür",
+      "Petekler sökülmeden, temiz ve düzenli çalışma",
+    ],
+    faq: [
+      {
+        q: "Petek temizliği ne sıklıkla yapılmalı?",
+        a: "Genellikle 2-3 yılda bir yapılması önerilir. Petekler eşit ısınmıyorsa veya fatura belirgin şekilde arttıysa beklemeden temizlik yaptırmak gerekir.",
+      },
+      {
+        q: "Petek temizliği için petekler sökülür mü?",
+        a: "Hayır. Temizleme makinesi tesisata bağlanır ve işlem petekler yerinde kalarak yapılır.",
+      },
+      {
+        q: "Petek temizliği ne kadar sürer?",
+        a: "Ortalama bir dairede petek sayısına ve kirlilik durumuna göre birkaç saat içinde tamamlanır.",
+      },
+      {
+        q: "Petek temizliği kombiye zarar verir mi?",
+        a: "Doğru solüsyon ve yöntemle yapıldığında vermez; aksine tortunun azalması kombinin daha verimli ve sorunsuz çalışmasını sağlar.",
+      },
+    ],
+    metaTitle: "Kombi ve Petek Temizliği | Makineli Petek Temizleme — Hizmet34 Tesisat",
+    metaDescription:
+      "Isınmayan petekler ve artan doğalgaz faturası için petekleri sökmeden makineli petek temizliği ve kombi kontrolü. İstanbul geneli hizmet.",
   },
 ];
 

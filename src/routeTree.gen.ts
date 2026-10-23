@@ -25,6 +25,7 @@ import { Route as HizmetBolgeleriIndexRouteImport } from './routes/hizmet-bolgel
 import { Route as HizmetBolgeleriIlceRouteImport } from './routes/hizmet-bolgeleri.$ilce'
 import { Route as HizmetlerIndexRouteImport } from './routes/hizmetler.index'
 import { Route as HizmetlerSlugRouteImport } from './routes/hizmetler.$slug'
+import { Route as KombiPetekTemizligiIlceRouteImport } from './routes/kombi-petek-temizligi.$ilce'
 import { Route as RehberIndexRouteImport } from './routes/rehber.index'
 import { Route as RehberSlugRouteImport } from './routes/rehber.$slug'
 import { Route as SuKacagiTespitiIlceRouteImport } from './routes/su-kacagi-tespiti.$ilce'
@@ -110,6 +111,11 @@ const HizmetlerSlugRoute = HizmetlerSlugRouteImport.update({
   path: '/$slug',
   getParentRoute: () => HizmetlerRoute,
 } as any)
+const KombiPetekTemizligiIlceRoute = KombiPetekTemizligiIlceRouteImport.update({
+  id: '/kombi-petek-temizligi/$ilce',
+  path: '/kombi-petek-temizligi/$ilce',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const RehberIndexRoute = RehberIndexRouteImport.update({
   id: '/',
   path: '/',
@@ -146,6 +152,7 @@ export interface FileRoutesByFullPath {
   '/sik-sorulan-sorular': typeof SikSorulanSorularRoute
   '/hizmet-bolgeleri/$ilce': typeof HizmetBolgeleriIlceRoute
   '/hizmetler/$slug': typeof HizmetlerSlugRoute
+  '/kombi-petek-temizligi/$ilce': typeof KombiPetekTemizligiIlceRoute
   '/rehber/$slug': typeof RehberSlugRoute
   '/su-kacagi-tespiti/$ilce': typeof SuKacagiTespitiIlceRoute
   '/tikaniklik-acma/$ilce': typeof TikaniklikAcmaIlceRoute
@@ -165,6 +172,7 @@ export interface FileRoutesByTo {
   '/sik-sorulan-sorular': typeof SikSorulanSorularRoute
   '/hizmet-bolgeleri/$ilce': typeof HizmetBolgeleriIlceRoute
   '/hizmetler/$slug': typeof HizmetlerSlugRoute
+  '/kombi-petek-temizligi/$ilce': typeof KombiPetekTemizligiIlceRoute
   '/rehber/$slug': typeof RehberSlugRoute
   '/su-kacagi-tespiti/$ilce': typeof SuKacagiTespitiIlceRoute
   '/tikaniklik-acma/$ilce': typeof TikaniklikAcmaIlceRoute
@@ -188,6 +196,7 @@ export interface FileRoutesById {
   '/sik-sorulan-sorular': typeof SikSorulanSorularRoute
   '/hizmet-bolgeleri/$ilce': typeof HizmetBolgeleriIlceRoute
   '/hizmetler/$slug': typeof HizmetlerSlugRoute
+  '/kombi-petek-temizligi/$ilce': typeof KombiPetekTemizligiIlceRoute
   '/rehber/$slug': typeof RehberSlugRoute
   '/su-kacagi-tespiti/$ilce': typeof SuKacagiTespitiIlceRoute
   '/tikaniklik-acma/$ilce': typeof TikaniklikAcmaIlceRoute
@@ -212,6 +221,7 @@ export interface FileRouteTypes {
     | '/sik-sorulan-sorular'
     | '/hizmet-bolgeleri/$ilce'
     | '/hizmetler/$slug'
+    | '/kombi-petek-temizligi/$ilce'
     | '/rehber/$slug'
     | '/su-kacagi-tespiti/$ilce'
     | '/tikaniklik-acma/$ilce'
@@ -231,6 +241,7 @@ export interface FileRouteTypes {
     | '/sik-sorulan-sorular'
     | '/hizmet-bolgeleri/$ilce'
     | '/hizmetler/$slug'
+    | '/kombi-petek-temizligi/$ilce'
     | '/rehber/$slug'
     | '/su-kacagi-tespiti/$ilce'
     | '/tikaniklik-acma/$ilce'
@@ -253,6 +264,7 @@ export interface FileRouteTypes {
     | '/sik-sorulan-sorular'
     | '/hizmet-bolgeleri/$ilce'
     | '/hizmetler/$slug'
+    | '/kombi-petek-temizligi/$ilce'
     | '/rehber/$slug'
     | '/su-kacagi-tespiti/$ilce'
     | '/tikaniklik-acma/$ilce'
@@ -274,6 +286,7 @@ export interface RootRouteChildren {
   RehberRoute: typeof RehberRouteWithChildren
   ServisTalebiRoute: typeof ServisTalebiRoute
   SikSorulanSorularRoute: typeof SikSorulanSorularRoute
+  KombiPetekTemizligiIlceRoute: typeof KombiPetekTemizligiIlceRoute
   SuKacagiTespitiIlceRoute: typeof SuKacagiTespitiIlceRoute
   TikaniklikAcmaIlceRoute: typeof TikaniklikAcmaIlceRoute
 }
@@ -392,6 +405,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof HizmetlerSlugRouteImport
       parentRoute: typeof HizmetlerRoute
     }
+    '/kombi-petek-temizligi/$ilce': {
+      id: '/kombi-petek-temizligi/$ilce'
+      path: '/kombi-petek-temizligi/$ilce'
+      fullPath: '/kombi-petek-temizligi/$ilce'
+      preLoaderRoute: typeof KombiPetekTemizligiIlceRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/rehber/': {
       id: '/rehber/'
       path: '/'
@@ -477,6 +497,7 @@ const rootRouteChildren: RootRouteChildren = {
   RehberRoute: RehberRouteWithChildren,
   ServisTalebiRoute: ServisTalebiRoute,
   SikSorulanSorularRoute: SikSorulanSorularRoute,
+  KombiPetekTemizligiIlceRoute: KombiPetekTemizligiIlceRoute,
   SuKacagiTespitiIlceRoute: SuKacagiTespitiIlceRoute,
   TikaniklikAcmaIlceRoute: TikaniklikAcmaIlceRoute,
 }

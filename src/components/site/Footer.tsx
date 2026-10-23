@@ -9,6 +9,7 @@ const footerServices = services.filter((s) =>
     "kamerali-gider-goruntuleme",
     "su-tesisati-tamiri",
     "tesisat-yenileme",
+    "kombi-petek-temizligi",
   ].includes(s.slug),
 );
 
